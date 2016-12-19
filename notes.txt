@@ -1,0 +1,8 @@
+- the problem is somewhere in the sorting of d3.chart.sankey.min.js
+- solution(?): modify d3.chart.sankey.min.js so that it doesnt sort the data
+- what this means? can't use cdn, will have to use custom modified javascript file
+- filter & sorting: this will be done independent of the charts by buttons on the page
+  - sort/filter data on click of button
+  - pass data to chart function to re-paint
+
+- tool tip sorting(?): on hover functionality is also in d3.chart.sankey.min.js
