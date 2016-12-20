@@ -1,0 +1,64 @@
+{
+  "nodes": [
+    {
+      "name": "energy",
+      "id": "energy"
+    },
+    {
+      "name": "land use",
+      "id": "land_use"
+    },
+    {
+      "name": "human resources",
+      "id": "human_resources"
+    },
+    {
+      "name": "forest",
+      "id": "forest"
+    },
+    {
+      "name": "desert",
+      "id": "desert"
+    },
+    {
+      "name": "business",
+      "id": "business"
+    },
+    {
+      "name": "tech",
+      "id": "tech"
+    }
+  ],
+  "links": [
+    {
+      "source": 0,
+      "value": 3,
+      "target": 1
+    },
+    {
+      "source": 0,
+      "value": 2,
+      "target": 2
+    },
+    {
+      "source": 1,
+      "value": 2,
+      "target": 3
+    },
+    {
+      "source": 1,
+      "value": 1,
+      "target": 4
+    },
+    {
+      "source": 2,
+      "value": 1,
+      "target": 5
+    },
+    {
+      "source": 2,
+      "value": 1,
+      "target": 6
+    }
+  ]
+}

@@ -4,5 +4,6 @@
 - filter & sorting: this will be done independent of the charts by buttons on the page
   - sort/filter data on click of button
   - pass data to chart function to re-paint
+- data manipulation might be tricky
 
 - tool tip sorting(?): on hover functionality is also in d3.chart.sankey.min.js
