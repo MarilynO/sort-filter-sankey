@@ -5,5 +5,6 @@
   - sort/filter data on click of button
   - pass data to chart function to re-paint
 - data manipulation might be tricky
+  - load in a csv and format it to json?
 
 - tool tip sorting(?): on hover functionality is also in d3.chart.sankey.min.js
