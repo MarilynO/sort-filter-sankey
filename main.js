@@ -44,32 +44,50 @@
 //
 //   button.addEventListener('click', filterData);
 // });
-Array.prototype.contains = function ( needle ) {
-   for (i in this) {
-       if (this[i] == needle) return true;
-   }
-   return false;
-}
 d3.csv('test-energy.csv', function(error, tabular) {
   console.log(tabular);
+
+  function contains(arr, val) {
+    for (i in arr) {
+      if(arr[i] == val) {
+        return 1;
+      }
+    }
+    return -1;
+  }
 
   function formatData(x) {
     var json = {
       nodes: [],
       links: []
     };
-    x.forEach(function(d) {
-      for (key in d) {
-        if (!json.nodes.contains(d[key])) {
+    var hierarchy = Object.keys(x[0]);
+    console.log(hierarchy);
+    var index = 0;
+    for (var i = 0; i < hierarchy.length; i++) {
+      x.forEach(function(d) {
+        //all the names are in tree order
+        console.log(d[hierarchy[i]]);
+        if (contains(json.nodes, d[hierarchy[i]]) == -1) {
           json.nodes.push(
             {
-              name: d[key],
-              id: d[key]
+              "name": d[hierarchy[i]],
+              "id": d[hierarchy[i]]
             }
           );
+          json.links.push(
+            {
+              "column": i,
+              "source": (index - 1),
+              "target": (index + 1),
+              "value": 1
+            }
+          );
+        } else {
+          console.log('shoes');
         }
-      }
-    });
+      })
+    }
     return json;
   }
 
