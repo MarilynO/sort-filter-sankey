@@ -32,17 +32,17 @@
   "links": [
     {
       "source": 0,
-      "value": 3,
+      "value": 2,
       "target": 1
     },
     {
       "source": 0,
-      "value": 2,
+      "value": 3,
       "target": 2
     },
     {
       "source": 1,
-      "value": 2,
+      "value": 1,
       "target": 3
     },
     {
@@ -52,7 +52,7 @@
     },
     {
       "source": 2,
-      "value": 1,
+      "value": 2,
       "target": 5
     },
     {

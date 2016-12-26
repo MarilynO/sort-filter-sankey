@@ -8,3 +8,9 @@
   - load in a csv and format it to json?
 
 - tool tip sorting(?): on hover functionality is also in d3.chart.sankey.min.js
+
+MOVING FORWARD:
+- does the sankey chart do any sorting?
+    - frequency ('value')
+    - alphabetical
+- finish algorithm converting csv data to filterable json data.
