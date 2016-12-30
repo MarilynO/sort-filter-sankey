@@ -13,4 +13,5 @@ MOVING FORWARD:
 - does the sankey chart do any sorting?
     - frequency ('value')
     - alphabetical
+    -ANSWER: the chart is displayed by how the data is input in the nodes array and its corresponding paths in links. the format of json displayed is a node and all of its children
 - finish algorithm converting csv data to filterable json data.
