@@ -47,9 +47,10 @@
 d3.csv('test-energy.csv', function(error, tabular) {
   console.log(tabular);
 
-  function contains(arr, val, lvl) {
+  function contains(arr, val) {
+    console.log(arr);
     for (i in arr) {
-      if(arr[i][lvl] == val) {
+      if(arr[i]['name'] == val) {
         return 1;
       }
     }
@@ -68,7 +69,7 @@ d3.csv('test-energy.csv', function(error, tabular) {
       x.forEach(function(d) {
         //all the names are in tree order
         console.log(d[hierarchy[i]]);
-        if (contains(json.nodes, d[hierarchy[i]], hierarchy[i]) == -1) {
+        if (contains(json.nodes, d[hierarchy[i]]) == -1) {
           json.nodes.push(
             {
               "name": d[hierarchy[i]],
