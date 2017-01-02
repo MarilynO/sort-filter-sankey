@@ -1,6 +1,8 @@
 var GraphNode = function(name) {
   this.src = [];
   this.name = name;
+  this.id = name;
+  // this.column = 0;
   this.tar = [];
 };
 
@@ -69,5 +71,10 @@ d3.csv('test-energy.csv', function(error, data) {
       }
     }
   });
-  console.log(json.nodes);
+
+  //
+  json.nodes.forEach(function(d) {
+
+  });
+  console.log(json);
 });
