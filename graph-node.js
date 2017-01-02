@@ -74,7 +74,21 @@ d3.csv('test-energy.csv', function(error, data) {
 
   //
   json.nodes.forEach(function(d) {
-
+    console.log(d);
+    var linky = {
+      source: d.name,
+      target: json.nodes.contains(d.tar[0]),
+      value: 1
+    };
+    for (var i = 1; i < d.tar.length; i++) {
+      if (d.tar[i] == linky.target) {
+        linky.value++;
+      } else {
+        json.links.push(linky);
+        linky.target = json.nodes.contains(d.tar[0]);
+        linky.value = 1;
+      }
+    }
   });
   console.log(json);
 });
