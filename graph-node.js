@@ -24,34 +24,50 @@ GraphNode.prototype.getTarget = function () {
   return this.tar;
 };
 
-//returns -1 if src array doesn't contain val parameter, 1 otherwise
-GraphNode.prototype.srcContains = function (val) {
-  for (var i; i < this.src.length; i++) {
-    if (this.src[i] == val) {
-      return 1;
-    }
-  }
-  return -1;
-};
-
-//returns -1 if tar array doesn't contain val parameter, 1 otherwise
-GraphNode.prototype.tarContains = function (val) {
-  for (var i; i < this.tar.length; i++) {
-    if (this.tar[i] == val) {
-      return 1;
-    }
-  }
-  return -1;
-};
+//checks whether array of objects contains a node of name 'name'
+Array.prototype.contains = function (name) {
+   for (i in this) {
+       if (this[i]['name'] == name) return i;
+   }
+   return -1;
+}
 
 d3.csv('test-energy.csv', function(error, data) {
   console.log(data);
-  var nodes = [];
+  var json = {
+    nodes: [],
+    links: []
+  };
   var objKeys = Object.keys(data[0]);
-  console.log(objKeys.length);
   data.forEach(function(d) {
+    var index = 0;
     for (var i in d) {
-
+      //check if json.nodes contains the current node of noame d[objKeys[index]]
+      //if yes, var node = json.nodes at that index, add respective srcs and tars
+      var inOrOut = json.nodes.contains(d[objKeys[index]]);
+      var node;
+      if ( inOrOut != -1) {
+        node = json.nodes[inOrOut];
+        if (index != 0) {
+          node.addSource(d[objKeys[index - 1]]);
+        }
+        if (index != objKeys.length - 1) {
+          node.addTarget(d[objKeys[index + 1]]);
+        }
+        index++;
+      } else {
+        //if no, create a new node of name d[objkeys[index]] with respectice srcs and tars
+        node = new GraphNode(d[objKeys[index]]);
+        if (index != 0) {
+          node.addSource(d[objKeys[index - 1]]);
+        }
+        if (index != objKeys.length - 1) {
+          node.addTarget(d[objKeys[index + 1]]);
+        }
+        index++;
+        json.nodes.push(node);
+      }
     }
-  })
+  });
+  console.log(json.nodes);
 });
