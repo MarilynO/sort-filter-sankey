@@ -102,3 +102,5 @@ d3.json("custom-data.json", function(error, json) {
 //   var data = formatData(tabular);
 //   console.log(data);
 // });
+
+//might have to make a node class
