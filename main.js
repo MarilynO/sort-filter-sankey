@@ -64,6 +64,7 @@ d3.csv('test-energy.csv', function(error, tabular) {
     var hierarchy = Object.keys(x[0]);
     //index is position of node name array
     var index = 0;
+    var counter = 0;
     for (var i = 0; i < hierarchy.length; i++) {
       x.forEach(function(d) {
         //all the names are in tree order
@@ -76,20 +77,24 @@ d3.csv('test-energy.csv', function(error, tabular) {
               "column": i
             }
           );
+          //for source and target have some sort of counter variable that increments for every item in a column up to that variable
+          //example: source: (index - counter)
           json.links.push(
             {
               "column": i,
-              "source": (index - 1),
+              "source": (index - counter - 1),
               "target": (index + 1),
               "value": 1,
               "id": d[hierarchy[i]]
             }
           );
+          counter = 0;
         } else {
-          //increments value 
+          //increments value
           json.links.forEach(function(d) {
             if (curr == d.id) {
               d.value++;
+              counter++;
             }
           })
         }
