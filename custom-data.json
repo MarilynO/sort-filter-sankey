@@ -52,7 +52,12 @@
     },
     {
       "source": 2,
-      "value": 2,
+      "value": 1,
+      "target": 4
+    },
+    {
+      "source": 2,
+      "value": 1,
       "target": 5
     },
     {
