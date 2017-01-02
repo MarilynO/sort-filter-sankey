@@ -48,7 +48,6 @@ d3.csv('test-energy.csv', function(error, tabular) {
   console.log(tabular);
 
   function contains(arr, val) {
-    console.log(arr);
     for (i in arr) {
       if(arr[i]['name'] == val) {
         return 1;
@@ -63,12 +62,12 @@ d3.csv('test-energy.csv', function(error, tabular) {
       links: []
     };
     var hierarchy = Object.keys(x[0]);
-    console.log(hierarchy);
+    //index is position of node name array
     var index = 0;
     for (var i = 0; i < hierarchy.length; i++) {
       x.forEach(function(d) {
         //all the names are in tree order
-        console.log(d[hierarchy[i]]);
+        var curr = (d[hierarchy[i]]);
         if (contains(json.nodes, d[hierarchy[i]]) == -1) {
           json.nodes.push(
             {
@@ -82,11 +81,17 @@ d3.csv('test-energy.csv', function(error, tabular) {
               "column": i,
               "source": (index - 1),
               "target": (index + 1),
-              "value": 1
+              "value": 1,
+              "id": d[hierarchy[i]]
             }
           );
         } else {
-          console.log('shoes');
+          //increments value 
+          json.links.forEach(function(d) {
+            if (curr == d.id) {
+              d.value++;
+            }
+          })
         }
       })
     }
