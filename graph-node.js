@@ -34,7 +34,7 @@ Array.prototype.contains = function (name) {
    return -1;
 }
 
-d3.csv('test-energy.csv', function(error, data) {
+d3.csv('tester.csv', function(error, data) {
   console.log(data);
   var json = {
     nodes: [],
@@ -72,23 +72,48 @@ d3.csv('test-energy.csv', function(error, data) {
     }
   });
 
-  //
   json.nodes.forEach(function(d) {
     console.log(d);
-    var linky = {
-      source: d.name,
-      target: json.nodes.contains(d.tar[0]),
-      value: 1
-    };
-    for (var i = 1; i < d.tar.length; i++) {
-      if (d.tar[i] == linky.target) {
-        linky.value++;
-      } else {
+    var curr = "";
+    var linky = {source: parseInt(json.nodes.contains(d.name)), target: 0, value: 1};
+    for (var i = 0; i < d.tar.length; i++) {
+      var next = d.tar[i];
+      if (curr != next) {
         json.links.push(linky);
-        linky.target = json.nodes.contains(d.tar[0]);
-        linky.value = 1;
+        curr = next;
+        linky.target = parseInt(json.nodes.contains(next));
+      } else {
+        linky.value++;
       }
     }
   });
   console.log(json);
+
+  // var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
+  // chart
+  //   .name(label)
+  //   .colorNodes(function(name, node) {
+  //     return color(node, 1) || colors.fallback;
+  //   })
+  //   .colorLinks(function(link) {
+  //     return color(link.source, 4) || color(link.target, 1) || colors.fallback;
+  //   })
+  //   .nodeWidth(15)
+  //   .nodePadding(10)
+  //   .spread(true)
+  //   .iterations(0)
+  //   .draw(json);
+  // function label(node) {
+  //   return node.name.replace(/\s*\(.*?\)$/, '');
+  // }
+  // function color(node, depth) {
+  //   var id = node.id.replace(/(_score)?(_\d+)?$/, '');
+  //   if (colors[id]) {
+  //     return colors[id];
+  //   } else if (depth > 0 && node.targetLinks && node.targetLinks.length == 1) {
+  //     return color(node.targetLinks[0].source, depth-1);
+  //   } else {
+  //     return null;
+  //   }
+  // }
 });
