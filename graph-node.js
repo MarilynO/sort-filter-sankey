@@ -73,17 +73,21 @@ d3.csv('tester.csv', function(error, data) {
   });
 
   json.nodes.forEach(function(d) {
-    console.log(d);
-    var curr = "";
-    var linky = {source: parseInt(json.nodes.contains(d.name)), target: 0, value: 1};
-    for (var i = 0; i < d.tar.length; i++) {
-      var next = d.tar[i];
-      if (curr != next) {
-        json.links.push(linky);
-        curr = next;
-        linky.target = parseInt(json.nodes.contains(next));
-      } else {
-        linky.value++;
+    if (d.tar.length > 0) {
+      var linky = {source: parseInt(json.nodes.contains(d.name)), target: parseInt(json.nodes.contains(d.tar[0])), value: 0};
+      for (var i = 0; i < d.tar.length + 1; i++) {
+        var temp = {
+          source: parseInt(json.nodes.contains(d.name)),
+          target: parseInt(json.nodes.contains(d.tar[i])),
+          value: 1
+        };
+        if (temp.target == linky.target) {
+          linky.value++;
+        } else {
+          console.log(linky);
+          json.links.push(linky);
+          linky = temp;
+        }
       }
     }
   });

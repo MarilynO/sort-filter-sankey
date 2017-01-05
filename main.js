@@ -6,7 +6,7 @@ var colors = {
       'research_ingredient': '#3f3e47',
       'fallback':            '#9f9fa3'
     };
-d3.json("custom-data.json", function(error, json) {
+d3.json("tester.json", function(error, json) {
   console.log(json);
   var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
   chart
