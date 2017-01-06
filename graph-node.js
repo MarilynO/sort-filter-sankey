@@ -34,8 +34,7 @@ Array.prototype.contains = function (name) {
    return -1;
 }
 
-d3.csv('test-energy.csv', function(error, data) {
-  console.log(data);
+function formatData(data) {
   var json = {
     nodes: [],
     links: []
@@ -90,7 +89,12 @@ d3.csv('test-energy.csv', function(error, data) {
       }
     }
   });
-  console.log(json);
+  return json;
+}
+
+d3.csv('test-energy.csv', function(error, data) {
+  console.log(data);
+  var json = formatData(data);
 
   var colors = {
         'environment':         '#edbd00',
@@ -128,4 +132,12 @@ d3.csv('test-energy.csv', function(error, data) {
       return null;
     }
   }
+
+  function columnFilter() {
+    console.log('shoes');
+  }
+
+  var button = document.getElementById('button');
+
+  button.addEventListener('click', columnFilter);
 });
