@@ -34,7 +34,7 @@ Array.prototype.contains = function (name) {
    return -1;
 }
 
-d3.csv('tester.csv', function(error, data) {
+d3.csv('test-energy.csv', function(error, data) {
   console.log(data);
   var json = {
     nodes: [],
@@ -84,7 +84,6 @@ d3.csv('tester.csv', function(error, data) {
         if (temp.target == linky.target) {
           linky.value++;
         } else {
-          console.log(linky);
           json.links.push(linky);
           linky = temp;
         }

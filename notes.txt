@@ -1,17 +1,3 @@
-- the problem is somewhere in the sorting of d3.chart.sankey.min.js
-- solution(?): modify d3.chart.sankey.min.js so that it doesnt sort the data
-- what this means? can't use cdn, will have to use custom modified javascript file
-- filter & sorting: this will be done independent of the charts by buttons on the page
-  - sort/filter data on click of button
-  - pass data to chart function to re-paint
-- data manipulation might be tricky
-  - load in a csv and format it to json?
-
-- tool tip sorting(?): on hover functionality is also in d3.chart.sankey.min.js
-
-MOVING FORWARD:
-- does the sankey chart do any sorting?
-    - frequency ('value')
-    - alphabetical
-    -ANSWER: the chart is displayed by how the data is input in the nodes array and its corresponding paths in links. the format of json displayed is a node and all of its children
-- finish algorithm converting csv data to filterable json data.
+- rearrange order of columns....?
+- filter columns out
+- sort by frequency

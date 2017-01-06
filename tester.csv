@@ -1,5 +1,6 @@
 broad,sector,type
 energy,land use,forest
 energy,land use,desert
+energy,hr,desert
 energy,hr,business
 energy,hr,tech
