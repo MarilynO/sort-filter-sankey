@@ -133,8 +133,9 @@ d3.csv('test-energy.csv', function(error, data) {
     }
   }
 
+  //copy 'data' and filter each object to remove the key:value that corresponds to the column
   function columnFilter() {
-    console.log('shoes');
+
   }
 
   var button = document.getElementById('button');
