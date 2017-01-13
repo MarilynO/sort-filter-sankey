@@ -135,7 +135,19 @@ d3.csv('test-energy.csv', function(error, data) {
 
   //copy 'data' and filter each object to remove the key:value that corresponds to the column
   function columnFilter(val) {
-    console.log(val);
+    var filterThisIndex = val;
+    var filtered = data;
+    filtered.forEach(function(d) {
+      index = 0;
+      for (var i in d) {
+        if (index == filterThisIndex) {
+          delete d[i];
+        }
+        index++;
+      }
+    });
+    var newShit = formatData(filtered);
+    console.log(newShit);
   }
 
   var button = document.getElementById('button');
