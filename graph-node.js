@@ -95,6 +95,7 @@ function formatData(data) {
 d3.csv('test-energy.csv', function(error, data) {
   console.log(data);
   var json = formatData(data);
+  var filteredColumns = [];
 
   var colors = {
         'environment':         '#edbd00',
