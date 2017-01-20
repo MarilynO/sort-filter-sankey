@@ -157,7 +157,6 @@ d3.csv('test-energy.csv', function(error, data) {
         }
       }
     });
-    console.log(filtered);
     var newData = formatData(filtered);
     return newData;
   }
