@@ -100,10 +100,12 @@ d3.csv('test-energy.csv', function(error, data) {
   for (var i in data[0]) {
     $('#columnSelect').append($('<option></option>')
         .attr('value', i)
+        .attr('selected', true)
         .text(i));
   }
 
-  var json = formatData(data);
+  var all = Object.keys(data[0]);
+  var json = columnFilter(all);
   console.log(json);
 
   var colors = {
