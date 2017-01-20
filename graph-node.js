@@ -92,18 +92,28 @@ function formatData(data) {
   return json;
 }
 
+//load different CSV's here
 d3.csv('test-energy.csv', function(error, data) {
   console.log(data);
+
+  //populate select column feature
+  for (var i in data[0]) {
+    $('#columnSelect').append($('<option></option>')
+        .attr('value', i)
+        .text(i));
+  }
+
   var json = formatData(data);
+  console.log(json);
   var filteredColumns = [];
 
   var colors = {
-        'environment':         '#edbd00',
-        'social':              '#367d85',
-        'animals':             '#97ba4c',
-        'health':              '#f5662b',
-        'research_ingredient': '#3f3e47',
-        'fallback':            '#9f9fa3'
+        'bioenergy':         '#edbd00',
+        'solar':              '#367d85',
+        'hydro':             '#97ba4c',
+        'wind':              '#f5662b',
+        'environment': '#3f3e47',
+        'engineering':            '#9f9fa3'
       };
 
   var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
@@ -151,18 +161,14 @@ d3.csv('test-energy.csv', function(error, data) {
     return newShit;
   }
 
-  var button = document.getElementById('button');
-  var button2 = document.getElementById('button2');
+  //redraw chart if different columns selected
+  $('#columnSelect').change(function() {
+    selectedColumns = [];
 
-  button.addEventListener('click', function() {
-    var val = this.value;
-    json = columnFilter(val);
+    $('#columnSelect option:selected').each(function() {
+      selectedColumns.push($(this).text());
+    });
+
     chart.draw(json);
   });
-
-  button2.addEventListener('click', function() {
-    var val = this.value;
-    json = columnFilter(val);
-    chart.draw(json);
-  })
 });
