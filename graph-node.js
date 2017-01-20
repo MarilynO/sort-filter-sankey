@@ -170,6 +170,16 @@ d3.csv('test-energy.csv', function(error, data) {
     $('#columnSelect option:selected').each(function() {
       selectedColumns.push($(this).text());
     });
+    if ($('#columnSelect option:selected').length <= 2) {
+      console.log($('#columnSelect option:selected'));
+      $('#columnSelect option:selected').each(function(d) {
+        $('#columnSelect option:selected')[d].disabled = true;
+      })
+    } else {
+      $('#columnSelect option:selected').each(function(d) {
+        $('#columnSelect option:selected')[d].disabled = false;
+      })
+    }
     json = columnFilter(selectedColumns);
     chart.draw(json);
   });
