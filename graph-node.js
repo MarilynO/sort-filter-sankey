@@ -105,7 +105,6 @@ d3.csv('test-energy.csv', function(error, data) {
 
   var json = formatData(data);
   console.log(json);
-  var filteredColumns = [];
 
   var colors = {
         'bioenergy':         '#edbd00',
@@ -145,20 +144,22 @@ d3.csv('test-energy.csv', function(error, data) {
   }
 
   //copy 'data' and filter each object to remove the key:value that corresponds to the column
-  function columnFilter(val) {
-    var filterThisIndex = val;
-    var filtered = data;
+  function columnFilter(valArr) {
+    var filtered = [];
+    data.forEach(function(d) {
+      var obj = Object.assign({}, d);
+      filtered.push(obj);
+    });
     filtered.forEach(function(d) {
-      index = 0;
       for (var i in d) {
-        if (index == filterThisIndex) {
-          delete d[i];
+        if (valArr.indexOf(i) == -1) {
+          delete(d[i]);
         }
-        index++;
       }
     });
-    var newShit = formatData(filtered);
-    return newShit;
+    console.log(filtered);
+    var newData = formatData(filtered);
+    return newData;
   }
 
   //redraw chart if different columns selected
@@ -168,7 +169,7 @@ d3.csv('test-energy.csv', function(error, data) {
     $('#columnSelect option:selected').each(function() {
       selectedColumns.push($(this).text());
     });
-
+    json = columnFilter(selectedColumns);
     chart.draw(json);
   });
 });
