@@ -9,6 +9,8 @@ INSTRUCTIONS
 - navigate to directory
 - start a local server with 'python -m SimpleHTTPServer 8080'
 - there is now a local server running at 'localhost:8080' in your web browser
+- to stop the local server from running, type 'ctrl c'
+- you can't navigate in terminal while there is a server running so pull all changes before you start the server
 
 TO PULL CHANGES...
 - navigate to directory
