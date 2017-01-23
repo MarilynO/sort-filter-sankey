@@ -4,3 +4,22 @@
 
 - use column coloring
 -get filtering buttons to bring data back too
+
+INSTRUCTIONS
+- navigate to directory
+- start a local server with 'python -m SimpleHTTPServer 8080'
+- there is now a local server running at 'localhost:8080' in your web browser
+
+TO PULL CHANGES...
+- navigate to directory
+- pull changes with 'git pull'
+- in terminal you should see things being downloaded
+- if terminal has no errors, it has worked and you have the most up to date version of the repository
+
+TERMINAL NAVIGATION 101
+- 'cd <insert directory name here>' is how you change to a directory (folder)
+- to view every file/folder with in the current directory, you can type 'ls' which will list everything in terminal
+- to see what directory you are currently in type 'pwd' in terminal which prints the working directory
+- to navigate back a directory, type 'cd ..'
+- navigation commands can be chained together with '/'
+- if a directory name has a space in it, put a backslash before the space like 'my\ folder'
