@@ -170,7 +170,6 @@ d3.csv('test-energy.csv', function(error, data) {
     return newData;
   }
 
-  var arb = ['environment']
   //filter chart by nodes connected to selected node
   function rowFilter(valArr) {
     var filtered = [];
@@ -195,11 +194,6 @@ d3.csv('test-energy.csv', function(error, data) {
     var newData = formatData(filtered);
     return newData;
   }
-
-  $('#button').click(function() {
-    json = rowFilter(arb);
-    chart.draw(json);
-  });
 
   //redraw chart if different columns selected
   $('#columnSelect').change(function() {
