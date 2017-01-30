@@ -1,9 +1,4 @@
-- rearrange order of columns....?
-- filter columns out
-- sort by frequency
-
-- use column coloring
--get filtering buttons to bring data back too
+-filter by 'row'
 
 INSTRUCTIONS
 - navigate to directory

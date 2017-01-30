@@ -95,6 +95,7 @@ function formatData(data) {
 //load different CSV's here
 d3.csv('test-energy.csv', function(error, data) {
   console.log(data);
+  var currData;
 
   //populate select column feature
   for (var i in data[0]) {
@@ -163,6 +164,38 @@ d3.csv('test-energy.csv', function(error, data) {
     return newData;
   }
 
+  var arb = ['environment']
+  function rowFilter(valArr) {
+    var filtered = [];
+    data.forEach(function(d) {
+      var obj = Object.assign({}, d);
+      filtered.push(obj);
+    });
+    var len = filtered.length;
+    for (var i = 0; i < len; i++) {
+      var containsNode = false;
+      for (var j in filtered[i]) {
+        if (valArr.indexOf(filtered[i][j]) != -1) {
+          containsNode = true;
+        }
+      }
+      if (!containsNode) {
+        filtered.splice(i, 1);
+        len--;
+        i--;
+      }
+    }
+    console.log(filtered);
+    var newData = formatData(filtered);
+    return newData;
+  }
+
+  $('#button').click(function() {
+    json = rowFilter(arb);
+    chart.draw(json);
+  });
+
+  $('#columnSelect').disabled = false;
   //redraw chart if different columns selected
   $('#columnSelect').change(function() {
     selectedColumns = [];
