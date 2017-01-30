@@ -107,7 +107,13 @@ d3.csv('test-energy.csv', function(error, data) {
 
   var all = Object.keys(data[0]);
   var json = columnFilter(all);
-  console.log(json);
+
+  //populate select row feature
+  json.nodes.forEach(function(d) {
+    $('#nodeSelect').append($('<option></option>')
+        .attr('value', d.name)
+        .text(d.name));
+  })
 
   var colors = {
         'bioenergy':         '#edbd00',
@@ -165,6 +171,7 @@ d3.csv('test-energy.csv', function(error, data) {
   }
 
   var arb = ['environment']
+  //filter chart by nodes connected to selected node
   function rowFilter(valArr) {
     var filtered = [];
     data.forEach(function(d) {
@@ -185,7 +192,6 @@ d3.csv('test-energy.csv', function(error, data) {
         i--;
       }
     }
-    console.log(filtered);
     var newData = formatData(filtered);
     return newData;
   }
@@ -195,7 +201,6 @@ d3.csv('test-energy.csv', function(error, data) {
     chart.draw(json);
   });
 
-  $('#columnSelect').disabled = false;
   //redraw chart if different columns selected
   $('#columnSelect').change(function() {
     selectedColumns = [];
@@ -214,6 +219,17 @@ d3.csv('test-energy.csv', function(error, data) {
       })
     }
     json = columnFilter(selectedColumns);
+    chart.draw(json);
+  });
+
+  //redraw chart if different nodes selected
+  $('#nodeSelect').change(function() {
+    selectedNodes = [];
+
+    $('#nodeSelect option:selected').each(function() {
+      selectedNodes.push($(this).text());
+    });
+    json = rowFilter(selectedNodes);
     chart.draw(json);
   });
 });
