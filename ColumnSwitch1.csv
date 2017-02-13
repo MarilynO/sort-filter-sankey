@@ -1,0 +1,106 @@
+General Area,Specialty,Researcher,Primary Department,College
+ENERGY,Solar,David Baker,Biochemistry,Arts & Sciences
+ENERGY,Bioenergy,Rose Ann Cattolico,Biology,Arts & Sciences
+ENERGY,Bioenergy,Thomas Spiro,Chemistry,Arts & Sciences
+ENERGY,Energy Harvesting,Thomas Spiro,Chemistry,Arts & Sciences
+ENERGY,Solar,Brandi Cossairt,Chemistry,Arts & Sciences
+ENERGY,Solar,Charles Campbell,Chemistry,Arts & Sciences
+ENERGY,Solar,Daniel Gamelin,Chemistry,Arts & Sciences
+ENERGY,Solar,David Ginger,Chemistry,Arts & Sciences
+ENERGY,Solar,Thomas Spiro,Chemistry,Arts & Sciences
+ENERGY,Wind,Allison Cullen,Evans School of Public Affairs,Arts & Sciences
+ENERGY,Bioenergy,Caroline Harwood,Microbiology,Arts & Sciences
+ENERGY,Bioenergy,John Leigh,Microbiology,Arts & Sciences
+ENERGY,Bioenergy,Mary Lidstrom,Microbiology,Arts & Sciences
+ENERGY,Energy Harvesting,Molecular Engineering and Sciences Institute,Physics,Arts & Sciences
+ENERGY,Solar,Fernando Vila,Physics,Arts & Sciences
+ENERGY,Solar,Gerald Seidler,Physics,Arts & Sciences
+ENERGY,Solar,John Rehr,Physics,Arts & Sciences
+POLICY,corporate social responsibility,Aseem Prakash,Political Science,Arts & Sciences
+POLICY,environmental regulations,*Peter J. May,Political Science,Arts & Sciences
+POLICY,pollution,Aseem Prakash,Political Science,Arts & Sciences
+POLICY,sustainable communities,W. Lance Bennett,Political Science,Arts & Sciences
+REGULATION,environmental regulations,*Peter J. May,Political Science,Arts & Sciences
+SOCIAL,sustainable communities,Karen Litfin,Political Science,Arts & Sciences
+SOCIAL,sustainable communities,W. Lance Bennett,Political Science,Arts & Sciences
+ENERGY,Bioenergy,James Hermanson,Aeronautics and Astronautics,Engineering
+ENERGY,Fusion,Richard Milroy,Aeronautics and Astronautics,Engineering
+ENERGY,Fusion,Thomas Jarboe,Aeronautics and Astronautics,Engineering
+ENERGY,Fusion,Uri Shumlak,Aeronautics and Astronautics,Engineering
+ENERGY,Bioenergy,Daniel Schwartz,Chemical Engineering,Engineering
+ENERGY,Bioenergy,James Carothers,Chemical Engineering,Engineering
+ENERGY,Solar,Hugh Hillhouse,Chemical Engineering,Engineering
+ENERGY,Solar,Lilo Pozzo,Chemical Engineering,Engineering
+ENERGY,Solar,Samson Jenekhe,Chemical Engineering,Engineering
+ENERGY,Bioenergy,David Stensel,Civil & Environmental Engineering,Engineering
+ENERGY,electric vehicles,Don MacKenzie,Civil & Environmental Engineering,Engineering
+ENERGY,Tidal/Hydrokinetics,Jim Thomson,Civil & Environmental Engineering,Engineering
+ENERGY,Wind,Dorothy Reed,Civil & Environmental Engineering,Engineering
+NATURAL RESOURCE DEGRADATION,carbon cycling,David Butman,Civil & Environmental Engineering,Engineering
+NATURAL RESOURCE DEGRADATION,carbon cycling,Rebecca B. Neumann,Civil & Environmental Engineering,Engineering
+NATURAL RESOURCE DEGRADATION,human health impacts,Rebecca B. Neumann,Civil & Environmental Engineering,Engineering
+NATURAL RESOURCE DEGRADATION,pollution,Rebecca B. Neumann,Civil & Environmental Engineering,Engineering
+NATURAL RESOURCE DEGRADATION,soil resources,Rebecca B. Neumann,Civil & Environmental Engineering,Engineering
+NATURAL RESOURCE DEGRADATION,water management,Rebecca B. Neumann,Civil & Environmental Engineering,Engineering
+NATURAL RESOURCE DEGRADATION,water quality,*Michael T. Brett,Civil & Environmental Engineering,Engineering
+NATURAL RESOURCE DEGRADATION,water resources,David Butman,Civil & Environmental Engineering,Engineering
+NATURAL RESOURCE DEGRADATION,water resources,Jessica D. Lundquist,Civil & Environmental Engineering,Engineering
+PLANNING,sustainable infrastructure,Dorothy A. Reed,Civil & Environmental Engineering,Engineering
+PLANNING,urban planning,Cynthia Chen,Civil & Environmental Engineering,Engineering
+PLANNING,wastewater management,Jessica Kaminsky,Civil & Environmental Engineering,Engineering
+PLANNING,water management,Jessica Kaminsky,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,air pollution,Julian D. Marshall,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,human health impacts,Julian D. Marshall,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,nuclear waste containment,*Robert D. Holtz,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,soil resources,*Robert D. Holtz,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,soil resources,Seana Davidson,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,soil resources,Seana Davidson,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,waste management,*Michael Dodd,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,waste management,Seana Davidson,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,wastewater management,Heidi Gough,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,wastewater management,Seana Davidson,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,wastewater treatment,David Stensel,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,wastewater treatment,Stuart E. Strand,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,water quality,*Michael Dodd,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,water quality,Edward Kolodziej,Civil & Environmental Engineering,Engineering
+POLLUTION/CLEANUP,water quality,Gregory V. Korshin,Civil & Environmental Engineering,Engineering
+RESOURCE MANAGEMENT,water management,Erkan Istanbulluoglu,Civil & Environmental Engineering,Engineering
+RESOURCE MANAGEMENT,water management,Stephen J. Burges,Civil & Environmental Engineering,Engineering
+TRANSPORTATION,consumption choices,Don MacKenzie,Civil & Environmental Engineering,Engineering
+TRANSPORTATION,electric vehicles,Don MacKenzie,Civil & Environmental Engineering,Engineering
+TRANSPORTATION,pollution : transportation planning,Anne Goodchild,Civil & Environmental Engineering,Engineering
+TRANSPORTATION,solar power,Joe P. Mahoney,Civil & Environmental Engineering,Engineering
+TRANSPORTATION,sustainable infrastructure,Joe P. Mahoney,Civil & Environmental Engineering,Engineering
+TRANSPORTATION,sustainable infrastructure,Steve Muench,Civil & Environmental Engineering,Engineering
+ENERGY,Energy Harvesting,Joshua Smith,Computer Science & Engineering,Engineering
+ENERGY,Energy Harvesting,Brian Otis,Electrical Engineering,Engineering
+ENERGY,Solar,Daniel Kirschen,Electrical Engineering,Engineering
+ENERGY,Solar,Scott Dunham,Electrical Engineering,Engineering
+ENERGY,Solar,Scott Dunham,Electrical Engineering,Engineering
+ENERGY,Wind,Daniel Kirschen,Electrical Engineering,Engineering
+ENERGY,Wind,Mohamed El-Sharkawi,Electrical Engineering,Engineering
+ENERGY,Bioenergy,Jihui Yang,Materials Science & Engineering,Engineering
+ENERGY,Energy Harvesting,Christine Luscombe,Materials Science & Engineering,Engineering
+ENERGY,Energy Harvesting,Fumio Ohuchi,Materials Science & Engineering,Engineering
+ENERGY,Energy Harvesting,Guozhong Cao,Materials Science & Engineering,Engineering
+ENERGY,Energy Harvesting,Xiaodong Xu,Materials Science & Engineering,Engineering
+ENERGY,Solar,Alex K.-Y. Jen,Materials Science & Engineering,Engineering
+ENERGY,Solar,Christine Luscombe,Materials Science & Engineering,Engineering
+ENERGY,Solar,Guozhong Cao,Materials Science & Engineering,Engineering
+ENERGY,Solar,Hong Ma,Materials Science & Engineering,Engineering
+ENERGY,Solar,Qifeng Zhang,Materials Science & Engineering,Engineering
+ENERGY,Bioenergy,Amy Shen,Mechanical Engineering,Engineering
+ENERGY,Energy Harvesting,Jiangyu Li,Mechanical Engineering,Engineering
+ENERGY,Energy Harvesting,Minoru Taya,Mechanical Engineering,Engineering
+ENERGY,Solar,J. Devin Mackenzie,Mechanical Engineering,Engineering
+ENERGY,Solar,Jiangyu Li,Mechanical Engineering,Engineering
+ENERGY,Solar,Minoru Taya,Mechanical Engineering,Engineering
+ENERGY,Tidal/Hydrokinetics,Alberto Aliseda,Mechanical Engineering,Engineering
+ENERGY,Tidal/Hydrokinetics,Brian Polagye,Mechanical Engineering,Engineering
+ENERGY,Tidal/Hydrokinetics,James Riley,Mechanical Engineering,Engineering
+ENERGY,Tidal/Hydrokinetics,Philip Malte,Mechanical Engineering,Engineering
+ENERGY,Tidal/Hydrokinetics,Steve Brunton,Mechanical Engineering,Engineering
+ENERGY,Bioenergy,Renata Bura,Environmental and Forest Science,Environment
+ENERGY,Bioenergy,Richard Gustafson,Environmental and Forest Science,Environment
+ENERGY,Bioenergy,Sharon Doty,Environmental and Forest Science,Environment
+ENERGY,Tidal/Hydrokinetics,Mitsuhiro Kawase,Physical Oceanography,Environment
