@@ -13,6 +13,11 @@ TO PULL CHANGES...
 - in terminal you should see things being downloaded
 - if terminal has no errors, it has worked and you have the most up to date version of the repository
 
+TO ADD CHANGES...
+- 'git add .'
+- 'git commit -m "<enter some message here>"'
+- 'git push', here it will prompt you for username and password
+
 TERMINAL NAVIGATION 101
 - 'cd <insert directory name here>' is how you change to a directory (folder)
 - to view every file/folder with in the current directory, you can type 'ls' which will list everything in terminal
