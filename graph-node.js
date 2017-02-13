@@ -94,10 +94,13 @@ function formatData(data) {
 
 //load different CSV's here
 d3.csv('test-energy.csv', function(error, data) {
-  console.log(data);
   var currData;
   var colors = {};
+
+  //array of possible colors to use for links
   var possColor = ['#edbd00','#367d85','#97ba4c', '#f5662b','#3f3e47','#9f9fa3'];
+
+  //iterate through all 'specialty' nodes and assign color;
   data.forEach(function(d) {
     for (var i in d) {
       if (i == 'specialty') {
@@ -108,7 +111,6 @@ d3.csv('test-energy.csv', function(error, data) {
       }
     }
   });
-  console.log(colors);
   //populate select column feature
   for (var i in data[0]) {
     $('#columnSelect').append($('<option></option>')
@@ -119,7 +121,6 @@ d3.csv('test-energy.csv', function(error, data) {
 
   var all = Object.keys(data[0]);
   var json = columnFilter(all);
-  console.log(json);
 
   //populate select row feature
   json.nodes.forEach(function(d) {
