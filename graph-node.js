@@ -96,7 +96,19 @@ function formatData(data) {
 d3.csv('test-energy.csv', function(error, data) {
   console.log(data);
   var currData;
-
+  var colors = {};
+  var possColor = ['#edbd00','#367d85','#97ba4c', '#f5662b','#3f3e47','#9f9fa3'];
+  data.forEach(function(d) {
+    for (var i in d) {
+      if (i == 'specialty') {
+        if (!(d[i] in colors)) {
+          colors[d[i]] = possColor[0];
+          possColor = possColor.slice(1, possColor.length);
+        }
+      }
+    }
+  });
+  console.log(colors);
   //populate select column feature
   for (var i in data[0]) {
     $('#columnSelect').append($('<option></option>')
@@ -107,6 +119,7 @@ d3.csv('test-energy.csv', function(error, data) {
 
   var all = Object.keys(data[0]);
   var json = columnFilter(all);
+  console.log(json);
 
   //populate select row feature
   json.nodes.forEach(function(d) {
@@ -114,15 +127,6 @@ d3.csv('test-energy.csv', function(error, data) {
         .attr('value', d.name)
         .text(d.name));
   })
-
-  var colors = {
-        'bioenergy':         '#edbd00',
-        'solar':              '#367d85',
-        'hydro':             '#97ba4c',
-        'wind':              '#f5662b',
-        'environment': '#3f3e47',
-        'engineering':            '#9f9fa3'
-      };
 
   var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
   chart
