@@ -121,6 +121,7 @@ d3.csv('test-energy.csv', function(error, data) {
 
   var all = Object.keys(data[0]);
   var json = columnFilter(all);
+  console.log(json);
 
   //populate select row feature
   json.nodes.forEach(function(d) {
