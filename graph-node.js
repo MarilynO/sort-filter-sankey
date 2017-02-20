@@ -234,10 +234,11 @@ d3.csv('test-energy.csv', function(error, data) {
       json = rowFilter(arr);
       chart.draw(json);
       var textDiv = $('#sel-nodes');
-      textDiv.append($('<p></p>')
-          .text(text));
+      var p = $('<p></p>').text(text);
+      textDiv.append(p);
     }
   });
+
 
   //redraw chart if different nodes selected
   $('#nodeSelect').change(function() {
