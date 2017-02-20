@@ -13,10 +13,7 @@ TO PULL CHANGES...
 - in terminal you should see things being downloaded
 - if terminal has no errors, it has worked and you have the most up to date version of the repository
 
-TO ADD CHANGES...
-- 'git add .'
-- 'git commit -m "<enter some message here>"'
-- 'git push', here it will prompt you for username and password
+
 
 TERMINAL NAVIGATION 101
 - 'cd <insert directory name here>' is how you change to a directory (folder)
@@ -25,3 +22,8 @@ TERMINAL NAVIGATION 101
 - to navigate back a directory, type 'cd ..'
 - navigation commands can be chained together with '/'
 - if a directory name has a space in it, put a backslash before the space like 'my\ folder'
+
+- make it live
+- filter by clicking nodes
+- radio buttons to check boxes
+- responsive height
