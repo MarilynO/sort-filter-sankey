@@ -225,10 +225,17 @@ d3.csv('test-energy.csv', function(error, data) {
     chart.draw(json);
   });
 
-  $('.node rect').each(function() {
-    var rect = $(this);
-    rect[0].onclick = function() {
-      console.log('shoes');
+  $('.node').each(function() {
+    var node = $(this);
+    var text = node[0]['lastChild']['textContent'];
+    var rect = node[0]['firstChild'];
+    rect.onclick = function() {
+      var arr = [text];
+      json = rowFilter(arr);
+      chart.draw(json);
+      var textDiv = $('#sel-nodes');
+      textDiv.append($('<p></p>')
+          .text(text));
     }
   });
 
