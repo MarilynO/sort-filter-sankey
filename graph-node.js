@@ -113,10 +113,14 @@ d3.csv('test-energy.csv', function(error, data) {
   });
   //populate select column feature
   for (var i in data[0]) {
-    $('#columnSelect').append($('<option></option>')
-        .attr('value', i)
-        .attr('selected', true)
-        .text(i));
+    var col = $('#columnSelect');
+    var lab = $('<label></label>');
+    var check = $('<input type="checkbox" checked>');
+    check.attr('value', i);
+    lab.append(check);
+    lab.append(i);
+    col.append(lab);
+    col.append($('</br>'));
   }
 
   var all = Object.keys(data[0]);
@@ -204,17 +208,17 @@ d3.csv('test-energy.csv', function(error, data) {
   $('#columnSelect').change(function() {
     selectedColumns = [];
 
-    $('#columnSelect option:selected').each(function() {
-      selectedColumns.push($(this).text());
+    $('#columnSelect input:checked').each(function() {
+      selectedColumns.push($(this).val());
     });
-    if ($('#columnSelect option:selected').length <= 2) {
-      console.log($('#columnSelect option:selected'));
-      $('#columnSelect option:selected').each(function(d) {
-        $('#columnSelect option:selected')[d].disabled = true;
+    if ($('#columnSelect input:checked').length <= 2) {
+      console.log($('#columnSelect input:checked'));
+      $('#columnSelect input:checked').each(function(d) {
+        $('#columnSelect input:checked')[d].disabled = true;
       })
     } else {
-      $('#columnSelect option:selected').each(function(d) {
-        $('#columnSelect option:selected')[d].disabled = false;
+      $('#columnSelect input:checked').each(function(d) {
+        $('#columnSelect input:checked')[d].disabled = false;
       })
     }
     json = columnFilter(selectedColumns);
