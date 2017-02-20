@@ -225,6 +225,13 @@ d3.csv('test-energy.csv', function(error, data) {
     chart.draw(json);
   });
 
+  $('.node rect').each(function() {
+    var rect = $(this);
+    rect[0].onclick = function() {
+      console.log('shoes');
+    }
+  });
+
   //redraw chart if different nodes selected
   $('#nodeSelect').change(function() {
     selectedNodes = [];
