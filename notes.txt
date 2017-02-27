@@ -23,7 +23,8 @@ TERMINAL NAVIGATION 101
 - navigation commands can be chained together with '/'
 - if a directory name has a space in it, put a backslash before the space like 'my\ folder'
 
-- make it live
-- filter by clicking nodes
-- radio buttons to check boxes
-- responsive height
+- filter by clicking nodes (cursor pointer)
+- node color by id
+- responsive height (breakpoints)
+- transitions
+- column labels
