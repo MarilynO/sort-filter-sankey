@@ -93,12 +93,12 @@ function formatData(data) {
 }
 
 //load different CSV's here
-d3.csv('test-energy.csv', function(error, data) {
+d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
   var currData;
   var colors = {};
 
   //array of possible colors to use for links
-  var possColor = ['#edbd00','#367d85','#97ba4c', '#f5662b','#3f3e47','#9f9fa3'];
+  var possColor = ['#EDDEDE', '#DBBDBD', '#C99C9C', '#B87A7A', '#A65959', '#854747', '#633636', '#422424', '#EDE6DE', '#DBCCBD', '#C9B29C', '#B8997A', '#A68059', '#856647', '#634C36', '#423324', '#EDEDDE', '#DBDBBD', '#C9C99C', '#B8B87A', '#A6A659', '#858547', '#636336', '#424224', '#E6EDDE', '#CCDBBD', '#B2C99C', '#99B87A', '#80A659', '#668547', '#4D6336', '#334224', '#DEEDDE', '#BDDBBD', '#9CC99C', '#7AB87A', '#59A659', '#478547', '#366336', '#244224', '#DEEDE6', '#BDDBCC', '#9CC9B2', '#7AB899', '#59A680', '#478566', '#36634D', '#244233', '#DEEDED', '#BDDBDB', '#9CC9C9', '#7AB8B8', '#59A6A6', '#478585'];
 
   //iterate through all 'specialty' nodes and assign color;
   data.forEach(function(d) {
