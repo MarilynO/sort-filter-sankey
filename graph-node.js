@@ -98,7 +98,7 @@ d3.csv('ColumnSwitch1.csv', function(error, data) {
   var colors = {};
 
   //array of possible colors to use for links
-  var possColor = ['#edbd00','#367d85','#97ba4c', '#f5662b','#3f3e47','#9f9fa3'];
+  var possColor = ['#EDDEDE', '#DBBDBD', '#C99C9C', '#B87A7A', '#A65959', '#854747', '#633636', '#422424', '#EDE6DE', '#DBCCBD', '#C9B29C', '#B8997A', '#A68059', '#856647', '#634C36', '#423324', '#EDEDDE', '#DBDBBD', '#C9C99C', '#B8B87A', '#A6A659', '#858547', '#636336', '#424224', '#E6EDDE', '#CCDBBD', '#B2C99C', '#99B87A', '#80A659', '#668547', '#4D6336', '#334224', '#DEEDDE', '#BDDBBD', '#9CC99C', '#7AB87A', '#59A659', '#478547', '#366336', '#244224', '#DEEDE6', '#BDDBCC', '#9CC9B2', '#7AB899', '#59A680', '#478566', '#36634D', '#244233', '#DEEDED', '#BDDBDB', '#9CC9C9', '#7AB8B8', '#59A6A6', '#478585'];
 
   //iterate through all 'specialty' nodes and assign color;
   data.forEach(function(d) {
@@ -113,10 +113,14 @@ d3.csv('ColumnSwitch1.csv', function(error, data) {
   });
   //populate select column feature
   for (var i in data[0]) {
-    $('#columnSelect').append($('<option></option>')
-        .attr('value', i)
-        .attr('selected', true)
-        .text(i));
+    var col = $('#columnSelect');
+    var lab = $('<label></label>');
+    var check = $('<input type="checkbox" checked>');
+    check.attr('value', i);
+    lab.append(check);
+    lab.append(i);
+    col.append(lab);
+    col.append($('</br>'));
   }
 
   var all = Object.keys(data[0]);
@@ -205,22 +209,37 @@ d3.csv('ColumnSwitch1.csv', function(error, data) {
   $('#columnSelect').change(function() {
     selectedColumns = [];
 
-    $('#columnSelect option:selected').each(function() {
-      selectedColumns.push($(this).text());
+    $('#columnSelect input:checked').each(function() {
+      selectedColumns.push($(this).val());
     });
-    if ($('#columnSelect option:selected').length <= 2) {
-      console.log($('#columnSelect option:selected'));
-      $('#columnSelect option:selected').each(function(d) {
-        $('#columnSelect option:selected')[d].disabled = true;
+    if ($('#columnSelect input:checked').length <= 2) {
+      console.log($('#columnSelect input:checked'));
+      $('#columnSelect input:checked').each(function(d) {
+        $('#columnSelect input:checked')[d].disabled = true;
       })
     } else {
-      $('#columnSelect option:selected').each(function(d) {
-        $('#columnSelect option:selected')[d].disabled = false;
+      $('#columnSelect input:checked').each(function(d) {
+        $('#columnSelect input:checked')[d].disabled = false;
       })
     }
     json = columnFilter(selectedColumns);
     chart.draw(json);
   });
+
+  $('.node').each(function() {
+    var node = $(this);
+    var text = node[0]['lastChild']['textContent'];
+    var rect = node[0]['firstChild'];
+    rect.onclick = function() {
+      var arr = [text];
+      json = rowFilter(arr);
+      chart.draw(json);
+      var textDiv = $('#sel-nodes');
+      var p = $('<p></p>').text(text);
+      textDiv.append(p);
+    }
+  });
+
 
   //redraw chart if different nodes selected
   $('#nodeSelect').change(function() {

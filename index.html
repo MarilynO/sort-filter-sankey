@@ -4,14 +4,7 @@
     <meta charset="utf-8">
     <title>d3.chart.sankey (product demo)</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script
-			  src="http://code.jquery.com/jquery-3.1.1.min.js"
-			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-			  crossorigin="anonymous"></script>
-    <script src="//d3js.org/d3.v3.min.js"></script>
-    <!-- <script src="/sankey.js"></script> -->
-    <script src="/d3.chart.min.js"></script>
-    <script src="/d3.chart.sankey.min.js"></script>
+
     <style>
       body {
         padding: 10px;
@@ -20,7 +13,7 @@
         margin: auto;
       }
       #chart {
-        height: 500px;
+        height: 800px;
         font: 13px sans-serif;
       }
       .node rect {
@@ -42,17 +35,24 @@
     <div class="row">
       <div class="col-xs-6">
         <h3>Select column(s)</h3>
-        <p>Hold <kbd>ctrl</kbd> or <kbd>cmd</kbd> and click to select and deselect columns.</p>
-        <select name="columnSelect" id="columnSelect" class="form-control" size="5" multiple min="2"></select>
+        <form name="columnSelect" id="columnSelect" ></form>
       </div>
       <div class="col-xs-6">
-        <h3>Select node(s)</h3>
-        <p>Hold <kbd>ctrl</kbd> or <kbd>cmd</kbd> and click to select and deselect nodes.</p>
-        <select name="nodeSelect" id="nodeSelect" class="form-control" size="5" multiple></select>
+        <h3>Selected node</h3>
+        <div id="sel-nodes">
+
+        </div>
       </div>
     </div> <!-- end row -->
     <div id="chart"></div>
-
+    <script
+			  src="http://code.jquery.com/jquery-3.1.1.min.js"
+			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			  crossorigin="anonymous"></script>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <!-- <script src="/sankey.js"></script> -->
+    <script src="d3.chart.min.js"></script>
+    <script src="d3.chart.sankey.min.js"></script>
     <script src="graph-node.js" charset="utf-8"></script>
   </body>
 </html>
