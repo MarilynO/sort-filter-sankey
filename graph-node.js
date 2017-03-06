@@ -186,6 +186,10 @@ d3.csv('test-energy.csv', function(error, data) {
       var obj = Object.assign({}, d);
       filtered.push(obj);
     });
+    if (valArr.length == 0) {
+      var newData = formatData(filtered)
+      return newData;
+    }
     var len = filtered.length;
     for (var i = 0; i < len; i++) {
       var containsNode = false;
@@ -225,16 +229,30 @@ d3.csv('test-energy.csv', function(error, data) {
     chart.draw(json);
   });
 
+  var selectedRows = [];
   $('.node').each(function() {
     var node = $(this);
     var text = node[0]['lastChild']['textContent'];
     var rect = node[0]['firstChild'];
     rect.onclick = function() {
-      var arr = [text];
-      json = rowFilter(arr);
+      selectedRows.push(text);
+      json = rowFilter(text);
       chart.draw(json);
       var textDiv = $('#sel-nodes');
       var p = $('<p></p>').text(text);
+      p.click(function() {
+        console.log($(this)[0]['innerText']);
+        var ind = selectedRows.indexOf($(this)[0]['innerText']);
+        selectedRows.splice(ind, 1);
+        console.log(selectedRows);
+        if (selectedRows.length == 0) {
+          json = rowFilter([]);
+        } else {
+          json = rowFilter(selectedRows[selectedRows.length - 1]);
+        }
+        chart.draw(json);
+        $(this).remove();
+      });
       textDiv.append(p);
     }
   });
