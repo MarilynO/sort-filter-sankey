@@ -98,7 +98,7 @@ d3.csv('test-energy.csv', function(error, data) {
   var colors = {};
 
   //array of possible colors to use for links
-  var possColor = ['#EDDEDE', '#DBBDBD', '#C99C9C', '#B87A7A', '#A65959', '#854747', '#633636', '#422424', '#EDE6DE', '#DBCCBD', '#C9B29C', '#B8997A', '#A68059', '#856647', '#634C36', '#423324', '#EDEDDE', '#DBDBBD', '#C9C99C', '#B8B87A', '#A6A659', '#858547', '#636336', '#424224', '#E6EDDE', '#CCDBBD', '#B2C99C', '#99B87A', '#80A659', '#668547', '#4D6336', '#334224', '#DEEDDE', '#BDDBBD', '#9CC99C', '#7AB87A', '#59A659', '#478547', '#366336', '#244224', '#DEEDE6', '#BDDBCC', '#9CC9B2', '#7AB899', '#59A680', '#478566', '#36634D', '#244233', '#DEEDED', '#BDDBDB', '#9CC9C9', '#7AB8B8', '#59A6A6', '#478585'];
+  var possColor = ['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd', '#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd', '#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd'];
 
   //iterate through all 'specialty' nodes and assign color;
   data.forEach(function(d) {
@@ -236,7 +236,8 @@ d3.csv('test-energy.csv', function(error, data) {
     var rect = node[0]['firstChild'];
     rect.onclick = function() {
       selectedRows.push(text);
-      json = rowFilter(text);
+      console.log(selectedRows);
+      json = rowFilter([text]);
       chart.draw(json);
       var textDiv = $('#sel-nodes');
       var p = $('<p></p>').text(text);
