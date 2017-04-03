@@ -136,11 +136,14 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
     $('#nodeSelect').append($('<option></option>')
         .attr('value', d.name)
         .text(d.name));
-  })
+  });
+
+
+  var crucialVals;
 
   var chart = d3.select("#chart").append("svg").attr('class', 'chart-area').chart("Sankey.Path");
-  chart
-    .name(label)
+
+  chart.name(label)
     .colorNodes(function(name, node) {
       return color(node, 1) || colors.fallback;
     })
@@ -155,24 +158,49 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
     addHeaders();
 
     function addHeaders() {
-      var crucialVals = chart.getX();
-      var headers = d3.select(".chart-area").selectAll(".column-headers").data(crucialVals);
+      // crucialVals = chart.getX();
+      // $(".column-headers").remove();
+      var xs = chart.getX();
+      var heads = Object.keys(data[0]);
+      var headData = {};
+      heads.forEach(function(d, i) {
+        headData.word = d;
+        headData.location = xs[i];
+        console.log(headData);
+      })
+      var space = d3.select(".chart-area");
+      var headers = space.selectAll(".column-headers").data(xs);
+
+
       headers.enter().append('text')
         .attr('dy', 25)
         .attr('dx', function(d,i) {
           return d;
         })
+        .attr('class', 'column-headers')
         .text(function(d,i) {
-          return i;
+          return heads[i];
         });
-        chart.clearX();
+
+        headers.exit().remove();
+
+        headers.transition().duration(1000)
+          // .attr('dy', 25)
+          .attr('dx', function(d,i) {
+            return d;
+          })
+          .text(function(d,i) {
+            return heads[i];
+          });
     }
 
-    function removeHeaders() {
-      var crucialVals = chart.getX();
-      var headers = d3.select(".chart-area").selectAll(".column-headers").data(crucialVals);
-      headers.exit().remove();
-    }
+    // function removeHeaders() {
+    //   // var crucialVals = chart.getX();
+    //   var empties = [];
+    //   var headers = d3.select(".chart-area").selectAll(".column-headers").data(empties);
+    //   headers.exit().remove();
+    //   // addHeaders();
+    // }
 
 
 
@@ -257,7 +285,6 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
     json = columnFilter(selectedColumns);
     chart.draw(emptyData);
     setTimeout(chart.draw(json), 1000);
-    removeHeaders();
     addHeaders();
     rectListen();
   });
@@ -265,7 +292,6 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
   function redraw(json) {
     chart.draw(emptyData);
     setTimeout(chart.draw(json), 1000);
-    removeHeaders();
     addHeaders();
     rectListen();
   }
@@ -280,7 +306,7 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
         json = rowFilter([text]);
         chart.draw(emptyData);
         setTimeout(chart.draw(json), 1000);
-        removeHeaders();
+        crucialVals = chart.getX();
         addHeaders();
         var textDiv = $('#sel-nodes');
         var p = $('<p></p>').text(text);
@@ -294,7 +320,7 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
           }
           chart.draw(emptyData);
           setTimeout(chart.draw(json), 1000);
-          removeHeaders();
+          crucialVals = chart.getX();
           addHeaders();
           $(this).remove();
         });
@@ -329,7 +355,6 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
     json = rowFilter(selectedNodes);
     chart.draw(emptyData);
     setTimeout(chart.draw(json), 1000);
-    removeHeaders();
     addHeaders();
   });
 });
