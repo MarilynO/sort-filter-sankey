@@ -93,9 +93,11 @@ function formatData(data) {
 }
 
 //load different CSV's here
-d3.csv('test-energy.csv', function(error, data) {
+d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
   var currData;
   var colors = {};
+  var selectedRows = [];
+  var emptyData = {"nodes": [], "links": []};
 
   //array of possible colors to use for links
   var possColor = ['#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd', '#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd', '#8dd3c7', '#ffffb3', '#bebada', '#fb8072', '#80b1d3', '#fdb462', '#b3de69', '#fccde5', '#d9d9d9', '#bc80bd'];
@@ -111,6 +113,7 @@ d3.csv('test-energy.csv', function(error, data) {
       }
     }
   });
+
   //populate select column feature
   for (var i in data[0]) {
     var col = $('#columnSelect');
@@ -124,7 +127,9 @@ d3.csv('test-energy.csv', function(error, data) {
   }
 
   var all = Object.keys(data[0]);
+  console.log(all);
   var json = columnFilter(all);
+  console.log(json);
 
   //populate select row feature
   json.nodes.forEach(function(d) {
@@ -133,7 +138,7 @@ d3.csv('test-energy.csv', function(error, data) {
         .text(d.name));
   })
 
-  var chart = d3.select("#chart").append("svg").chart("Sankey.Path");
+  var chart = d3.select("#chart").append("svg").attr('class', 'chart-area').chart("Sankey.Path");
   chart
     .name(label)
     .colorNodes(function(name, node) {
@@ -147,6 +152,31 @@ d3.csv('test-energy.csv', function(error, data) {
     .spread(true)
     .iterations(0)
     .draw(json);
+    addHeaders();
+
+    function addHeaders() {
+      var crucialVals = chart.getX();
+      var headers = d3.select(".chart-area").selectAll(".column-headers").data(crucialVals);
+      headers.enter().append('text')
+        .attr('dy', 25)
+        .attr('dx', function(d,i) {
+          return d;
+        })
+        .text(function(d,i) {
+          return i;
+        });
+        chart.clearX();
+    }
+
+    function removeHeaders() {
+      var crucialVals = chart.getX();
+      var headers = d3.select(".chart-area").selectAll(".column-headers").data(crucialVals);
+      headers.exit().remove();
+    }
+
+
+
+  rectListen();
   function label(node) {
     return node.name.replace(/\s*\(.*?\)$/, '');
   }
@@ -216,7 +246,6 @@ d3.csv('test-energy.csv', function(error, data) {
       selectedColumns.push($(this).val());
     });
     if ($('#columnSelect input:checked').length <= 2) {
-      console.log($('#columnSelect input:checked'));
       $('#columnSelect input:checked').each(function(d) {
         $('#columnSelect input:checked')[d].disabled = true;
       })
@@ -226,37 +255,68 @@ d3.csv('test-energy.csv', function(error, data) {
       })
     }
     json = columnFilter(selectedColumns);
-    chart.draw(json);
+    chart.draw(emptyData);
+    setTimeout(chart.draw(json), 1000);
+    removeHeaders();
+    addHeaders();
+    rectListen();
   });
 
-  var selectedRows = [];
-  $('.node').each(function() {
-    var node = $(this);
-    var text = node[0]['lastChild']['textContent'];
-    var rect = node[0]['firstChild'];
-    rect.onclick = function() {
-      selectedRows.push(text);
-      console.log(selectedRows);
-      json = rowFilter([text]);
-      chart.draw(json);
-      var textDiv = $('#sel-nodes');
-      var p = $('<p></p>').text(text);
-      p.click(function() {
-        console.log($(this)[0]['innerText']);
-        var ind = selectedRows.indexOf($(this)[0]['innerText']);
-        selectedRows.splice(ind, 1);
-        console.log(selectedRows);
-        if (selectedRows.length == 0) {
-          json = rowFilter([]);
-        } else {
-          json = rowFilter(selectedRows[selectedRows.length - 1]);
-        }
-        chart.draw(json);
-        $(this).remove();
-      });
-      textDiv.append(p);
-    }
-  });
+  function redraw(json) {
+    chart.draw(emptyData);
+    setTimeout(chart.draw(json), 1000);
+    removeHeaders();
+    addHeaders();
+    rectListen();
+  }
+
+  function rectListen() {
+    $('.node').each(function() {
+      var node = $(this);
+      var text = node[0]['lastChild']['textContent'];
+      var rect = node[0]['firstChild'];
+      rect.onclick = function() {
+        selectedRows.push(text);
+        json = rowFilter([text]);
+        chart.draw(emptyData);
+        setTimeout(chart.draw(json), 1000);
+        removeHeaders();
+        addHeaders();
+        var textDiv = $('#sel-nodes');
+        var p = $('<p></p>').text(text);
+        p.click(function() {
+          var ind = selectedRows.indexOf($(this)[0]['innerText']);
+          selectedRows.splice(ind, 1);
+          if (selectedRows.length == 0) {
+            json = rowFilter([]);
+          } else {
+            json = rowFilter(selectedRows[selectedRows.length - 1]);
+          }
+          chart.draw(emptyData);
+          setTimeout(chart.draw(json), 1000);
+          removeHeaders();
+          addHeaders();
+          $(this).remove();
+        });
+        textDiv.append(p);
+
+        //iterate htmlcollection
+        // var array = textDiv[0].children;
+        // for (var i = 0; i < array.length; i++) {
+        //   var curr = array[i];
+        //   curr.click(function() {
+        //     console.log($(this)[0]['innerText']);
+        //   })
+        // }
+      }
+    });
+  }
+
+  //for every filter in row filter selection box, add a listener
+  function pListen() {
+
+  }
+
 
 
   //redraw chart if different nodes selected
@@ -267,6 +327,9 @@ d3.csv('test-energy.csv', function(error, data) {
       selectedNodes.push($(this).text());
     });
     json = rowFilter(selectedNodes);
-    chart.draw(json);
+    chart.draw(emptyData);
+    setTimeout(chart.draw(json), 1000);
+    removeHeaders();
+    addHeaders();
   });
 });
