@@ -93,7 +93,7 @@ function formatData(data) {
 }
 
 //load different CSV's here
-d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
+d3.csv('UWSustainabilityResearchers_3_20.csv', function(error, data) {
   //keep track of columns filtered in an array
   var selColumns = [];
   //keep track of rows filtered in an array
