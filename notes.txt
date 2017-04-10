@@ -28,3 +28,9 @@ TERMINAL NAVIGATION 101
 - responsive height (breakpoints)
 - transitions
 - column labels
+
+4/3
+-responsive height
+-make column and row filters connected
+
+-look at visual telling cancer code to test possibility of migrating over

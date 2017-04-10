@@ -4,19 +4,33 @@ ENERGY,Fusion,Engineering,Aeronautics and Astronautics,Richard Milroy
 ENERGY,Fusion,Engineering,Aeronautics and Astronautics,Thomas Jarboe
 ENERGY,Fusion,Engineering,Aeronautics and Astronautics,Uri Shumlak
 ENERGY,Solar,Arts & Sciences,Biochemistry,David Baker
-ENERGY,Bioenergy,Arts & Sciences,Biology,Rose Ann Cattolico
-ENERGY,Bioenergy,Engineering,Chemical Engineering,Daniel Schwartz
-ENERGY,Bioenergy,Engineering,Chemical Engineering,James Carothers
 ENERGY,Solar,Engineering,Chemical Engineering,Hugh Hillhouse
 ENERGY,Solar,Engineering,Chemical Engineering,Lilo Pozzo
 ENERGY,Solar,Engineering,Chemical Engineering,Samson Jenekhe
-ENERGY,Bioenergy,Arts & Sciences,Chemistry,Thomas Spiro
-ENERGY,Energy Harvesting,Arts & Sciences,Chemistry,Thomas Spiro
 ENERGY,Solar,Arts & Sciences,Chemistry,Brandi Cossairt
 ENERGY,Solar,Arts & Sciences,Chemistry,Charles Campbell
 ENERGY,Solar,Arts & Sciences,Chemistry,Daniel Gamelin
 ENERGY,Solar,Arts & Sciences,Chemistry,David Ginger
 ENERGY,Solar,Arts & Sciences,Chemistry,Thomas Spiro
+ENERGY,Solar,Engineering,Electrical Engineering,Daniel Kirschen
+ENERGY,Solar,Engineering,Electrical Engineering,Scott Dunham
+ENERGY,Solar,Engineering,Electrical Engineering,Scott Dunham
+ENERGY,Solar,Engineering,Materials Science and Engineering,Alex K.-Y. Jen
+ENERGY,Solar,Engineering,Materials Science and Engineering,Christine Luscombe
+ENERGY,Solar,Engineering,Materials Science and Engineering,Guozhong Cao
+ENERGY,Solar,Engineering,Materials Science and Engineering,Hong Ma
+ENERGY,Solar,Engineering,Materials Science and Engineering,Qifeng Zhang
+ENERGY,Solar,Engineering,Mechanical Engineering,J. Devin Mackenzie
+ENERGY,Solar,Engineering,Mechanical Engineering,Jiangyu Li
+ENERGY,Solar,Engineering,Mechanical Engineering,Minoru Taya
+ENERGY,Solar,Arts & Sciences,Physics,Fernando Vila
+ENERGY,Solar,Arts & Sciences,Physics,Gerald Seidler
+ENERGY,Solar,Arts & Sciences,Physics,John Rehr
+ENERGY,Bioenergy,Arts & Sciences,Biology,Rose Ann Cattolico
+ENERGY,Bioenergy,Engineering,Chemical Engineering,Daniel Schwartz
+ENERGY,Bioenergy,Engineering,Chemical Engineering,James Carothers
+ENERGY,Bioenergy,Arts & Sciences,Chemistry,Thomas Spiro
+ENERGY,Energy Harvesting,Arts & Sciences,Chemistry,Thomas Spiro
 ENERGY,Tidal/Hydrokinetics,Engineering,Civil and Environmental Engineering,Jim Thomson
 ENERGY,Wind,Engineering,Civil and Environmental Engineering,Dorothy Reed
 ENERGY,Energy Harvesting,Engineering,Computer Science and Engineering,Joshua Smith
@@ -38,9 +52,6 @@ TECHNICAL SOLUTIONS,sustainable infrastructure,College of Built Environments,Dep
 TECHNICAL SOLUTIONS,sustainable infrastructure,College of Built Environments,Department of Architecture,Rick Mohler
 MARKET SOLUTIONS,environmental economics,Arts & Sciences,Department of Economics,Jacob LaRiviere
 ENERGY,Energy Harvesting,Engineering,Electrical Engineering,Brian Otis
-ENERGY,Solar,Engineering,Electrical Engineering,Daniel Kirschen
-ENERGY,Solar,Engineering,Electrical Engineering,Scott Dunham
-ENERGY,Solar,Engineering,Electrical Engineering,Scott Dunham
 ENERGY,Wind,Engineering,Electrical Engineering,Daniel Kirschen
 ENERGY,Wind,Engineering,Electrical Engineering,Mohamed El-Sharkawi
 ENERGY,Bioenergy,Environment,Environmental and Forest Science,Renata Bura
@@ -79,17 +90,9 @@ ENERGY,Energy Harvesting,Engineering,Materials Science and Engineering,Christine
 ENERGY,Energy Harvesting,Engineering,Materials Science and Engineering,Fumio Ohuchi
 ENERGY,Energy Harvesting,Engineering,Materials Science and Engineering,Guozhong Cao
 ENERGY,Energy Harvesting,Engineering,Materials Science and Engineering,Xiaodong Xu
-ENERGY,Solar,Engineering,Materials Science and Engineering,Alex K.-Y. Jen
-ENERGY,Solar,Engineering,Materials Science and Engineering,Christine Luscombe
-ENERGY,Solar,Engineering,Materials Science and Engineering,Guozhong Cao
-ENERGY,Solar,Engineering,Materials Science and Engineering,Hong Ma
-ENERGY,Solar,Engineering,Materials Science and Engineering,Qifeng Zhang
 ENERGY,Bioenergy,Engineering,Mechanical Engineering,Amy Shen
 ENERGY,Energy Harvesting,Engineering,Mechanical Engineering,Jiangyu Li
 ENERGY,Energy Harvesting,Engineering,Mechanical Engineering,Minoru Taya
-ENERGY,Solar,Engineering,Mechanical Engineering,J. Devin Mackenzie
-ENERGY,Solar,Engineering,Mechanical Engineering,Jiangyu Li
-ENERGY,Solar,Engineering,Mechanical Engineering,Minoru Taya
 ENERGY,Tidal/Hydrokinetics,Engineering,Mechanical Engineering,Alberto Aliseda
 ENERGY,Tidal/Hydrokinetics,Engineering,Mechanical Engineering,Brian Polagye
 ENERGY,Tidal/Hydrokinetics,Engineering,Mechanical Engineering,James Riley
@@ -100,9 +103,6 @@ ENERGY,Bioenergy,Arts & Sciences,Microbiology,John Leigh
 ENERGY,Bioenergy,Arts & Sciences,Microbiology,Mary Lidstrom
 ENERGY,Tidal/Hydrokinetics,Environment,Physical Oceanography,Mitsuhiro Kawase
 ENERGY,Energy Harvesting,Arts & Sciences,Physics,Molecular Engineering and Sciences Institute
-ENERGY,Solar,Arts & Sciences,Physics,Fernando Vila
-ENERGY,Solar,Arts & Sciences,Physics,Gerald Seidler
-ENERGY,Solar,Arts & Sciences,Physics,John Rehr
 POLICY,corporate social responsibility,Arts & Sciences,Political Science,Aseem Prakash
 POLICY,environmental regulations,Arts & Sciences,Political Science,*Peter J. May
 REGULATION,environmental regulations,Arts & Sciences,Political Science,*Peter J. May

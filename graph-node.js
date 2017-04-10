@@ -94,7 +94,11 @@ function formatData(data) {
 
 //load different CSV's here
 d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
-  var currData;
+  //keep track of columns filtered in an array
+  var selColumns = [];
+  //keep track of rows filtered in an array
+  var selRows = [];
+  var outside = [];
   var colors = {};
   var selectedRows = [];
   var emptyData = {"nodes": [], "links": []};
@@ -127,9 +131,7 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
   }
 
   var all = Object.keys(data[0]);
-  console.log(all);
-  var json = columnFilter(all);
-  console.log(json);
+  var json = allFilter();
 
   //populate select row feature
   json.nodes.forEach(function(d) {
@@ -139,7 +141,6 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
   });
 
 
-  var crucialVals;
 
   var chart = d3.select("#chart").append("svg").attr('class', 'chart-area').chart("Sankey.Path");
 
@@ -166,7 +167,6 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
       heads.forEach(function(d, i) {
         headData.word = d;
         headData.location = xs[i];
-        console.log(headData);
       })
       var space = d3.select(".chart-area");
       var headers = space.selectAll(".column-headers").data(xs);
@@ -179,7 +179,7 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
         })
         .attr('class', 'column-headers')
         .text(function(d,i) {
-          return heads[i];
+          return outside[i];
         });
 
         headers.exit().remove();
@@ -193,16 +193,6 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
             return heads[i];
           });
     }
-
-    // function removeHeaders() {
-    //   // var crucialVals = chart.getX();
-    //   var empties = [];
-    //   var headers = d3.select(".chart-area").selectAll(".column-headers").data(empties);
-    //   headers.exit().remove();
-    //   // addHeaders();
-    // }
-
-
 
   rectListen();
   function label(node) {
@@ -220,58 +210,109 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
   }
 
   //copy 'data' and filter each object to remove the key:value that corresponds to the column
-  function columnFilter(valArr) {
-    var filtered = [];
-    data.forEach(function(d) {
-      var obj = Object.assign({}, d);
-      filtered.push(obj);
-    });
-    filtered.forEach(function(d) {
-      for (var i in d) {
-        if (valArr.indexOf(i) == -1) {
-          delete(d[i]);
-        }
-      }
-    });
-    var newData = formatData(filtered);
-    return newData;
-  }
+  // function columnFilter(valArr) {
+  //   var filtered = [];
+  //   data.forEach(function(d) {
+  //     var obj = Object.assign({}, d);
+  //     filtered.push(obj);
+  //   });
+  //   filtered.forEach(function(d) {
+  //     for (var i in d) {
+  //       if (valArr.indexOf(i) == -1) {
+  //         delete(d[i]);
+  //       }
+  //     }
+  //   });
+  //   currData = filtered;
+  //   var newData = formatData(filtered);
+  //   return newData;
+  // }
+  //
+  // //filter chart by nodes connected to selected node
+  // function rowFilter(valArr) {
+  //   var filtered = [];
+  //   currData.forEach(function(d) {
+  //     var obj = Object.assign({}, d);
+  //     filtered.push(obj);
+  //   });
+  //   if (valArr.length == 0) {
+  //     currData = filtered;
+  //     var newData = formatData(filtered)
+  //     return newData;
+  //   }
+  //   var len = filtered.length;
+  //   for (var i = 0; i < len; i++) {
+  //     var containsNode = false;
+  //     for (var j in filtered[i]) {
+  //       if (valArr.indexOf(filtered[i][j]) != -1) {
+  //         containsNode = true;
+  //       }
+  //     }
+  //     if (!containsNode) {
+  //       filtered.splice(i, 1);
+  //       len--;
+  //       i--;
+  //     }
+  //   }
+  //   currData = filtered;
+  //   var newData = formatData(filtered);
+  //   return newData;
+  // }
 
-  //filter chart by nodes connected to selected node
-  function rowFilter(valArr) {
+  //filter all data using above information
+  function allFilter() {
+    //filtered data
     var filtered = [];
+
+    //iterate through all data and copy into filtered (data)
     data.forEach(function(d) {
       var obj = Object.assign({}, d);
       filtered.push(obj);
     });
-    if (valArr.length == 0) {
-      var newData = formatData(filtered)
-      return newData;
+
+    //iterate through each datum in filtered and delete key: value pairs from
+    //the data where each key value pair represents a column
+    if (selColumns.length > 0) {
+      filtered.forEach(function(d) {
+        for (var i in d) {
+          if (selColumns.indexOf(i) == -1) {
+            delete(d[i]);
+          }
+        }
+      })
     }
-    var len = filtered.length;
-    for (var i = 0; i < len; i++) {
-      var containsNode = false;
-      for (var j in filtered[i]) {
-        if (valArr.indexOf(filtered[i][j]) != -1) {
-          containsNode = true;
+
+    //iterate through data and delete nodes that aren't connected to nodes
+    //in selRows
+    if (selRows.length > 0){
+      var len = filtered.length;
+      for (var i = 0; i < len; i++) {
+        var containsNode = false;
+        for (var j in filtered[i]) {
+          if (selRows.indexOf(filtered[i][j]) != -1) {
+            containsNode = true;
+          }
+        }
+        if (!containsNode) {
+          filtered.splice(i, 1);
+          len--;
+          i--;
         }
       }
-      if (!containsNode) {
-        filtered.splice(i, 1);
-        len--;
-        i--;
-      }
     }
+
+    //return new formatted data
     var newData = formatData(filtered);
     return newData;
   }
 
   //redraw chart if different columns selected
+
   $('#columnSelect').change(function() {
-    selectedColumns = [];
+    selColumns = [];
 
     $('#columnSelect input:checked').each(function() {
-      selectedColumns.push($(this).val());
+      selColumns.push($(this).val());
     });
     if ($('#columnSelect input:checked').length <= 2) {
       $('#columnSelect input:checked').each(function(d) {
@@ -282,9 +323,9 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
         $('#columnSelect input:checked')[d].disabled = false;
       })
     }
-    json = columnFilter(selectedColumns);
+    json = allFilter();
     chart.draw(emptyData);
-    setTimeout(chart.draw(json), 1000);
+    chart.draw(json);
     addHeaders();
     rectListen();
   });
@@ -302,59 +343,43 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
       var text = node[0]['lastChild']['textContent'];
       var rect = node[0]['firstChild'];
       rect.onclick = function() {
-        selectedRows.push(text);
-        json = rowFilter([text]);
+        selRows.push(text);
+        json = allFilter();
         chart.draw(emptyData);
-        setTimeout(chart.draw(json), 1000);
+        chart.draw(json);
         crucialVals = chart.getX();
         addHeaders();
         var textDiv = $('#sel-nodes');
         var p = $('<p></p>').text(text);
         p.click(function() {
-          var ind = selectedRows.indexOf($(this)[0]['innerText']);
-          selectedRows.splice(ind, 1);
-          if (selectedRows.length == 0) {
-            json = rowFilter([]);
+          var ind = selRows.indexOf($(this)[0]['innerText']);
+          selRows.splice(ind, 1);
+          if (selRows.length == 0) {
+            json = allFilter();
           } else {
-            json = rowFilter(selectedRows[selectedRows.length - 1]);
+            json = allFilter();
           }
           chart.draw(emptyData);
-          setTimeout(chart.draw(json), 1000);
+          chart.draw(json);
           crucialVals = chart.getX();
           addHeaders();
           $(this).remove();
         });
         textDiv.append(p);
-
-        //iterate htmlcollection
-        // var array = textDiv[0].children;
-        // for (var i = 0; i < array.length; i++) {
-        //   var curr = array[i];
-        //   curr.click(function() {
-        //     console.log($(this)[0]['innerText']);
-        //   })
-        // }
       }
     });
   }
 
-  //for every filter in row filter selection box, add a listener
-  function pListen() {
-
-  }
-
-
-
   //redraw chart if different nodes selected
   $('#nodeSelect').change(function() {
-    selectedNodes = [];
+    selRows = [];
 
     $('#nodeSelect option:selected').each(function() {
-      selectedNodes.push($(this).text());
+      selRows.push($(this).text());
     });
-    json = rowFilter(selectedNodes);
+    json = allFilter();
     chart.draw(emptyData);
-    setTimeout(chart.draw(json), 1000);
+    chart.draw(json);
     addHeaders();
   });
 });
