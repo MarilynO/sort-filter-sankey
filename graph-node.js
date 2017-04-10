@@ -98,6 +98,7 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
   var selColumns = [];
   //keep track of rows filtered in an array
   var selRows = [];
+  // var node;
   var outside = [];
   var colors = {};
   var selectedRows = [];
@@ -209,56 +210,6 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
     }
   }
 
-  //copy 'data' and filter each object to remove the key:value that corresponds to the column
-  // function columnFilter(valArr) {
-  //   var filtered = [];
-  //   data.forEach(function(d) {
-  //     var obj = Object.assign({}, d);
-  //     filtered.push(obj);
-  //   });
-  //   filtered.forEach(function(d) {
-  //     for (var i in d) {
-  //       if (valArr.indexOf(i) == -1) {
-  //         delete(d[i]);
-  //       }
-  //     }
-  //   });
-  //   currData = filtered;
-  //   var newData = formatData(filtered);
-  //   return newData;
-  // }
-  //
-  // //filter chart by nodes connected to selected node
-  // function rowFilter(valArr) {
-  //   var filtered = [];
-  //   currData.forEach(function(d) {
-  //     var obj = Object.assign({}, d);
-  //     filtered.push(obj);
-  //   });
-  //   if (valArr.length == 0) {
-  //     currData = filtered;
-  //     var newData = formatData(filtered)
-  //     return newData;
-  //   }
-  //   var len = filtered.length;
-  //   for (var i = 0; i < len; i++) {
-  //     var containsNode = false;
-  //     for (var j in filtered[i]) {
-  //       if (valArr.indexOf(filtered[i][j]) != -1) {
-  //         containsNode = true;
-  //       }
-  //     }
-  //     if (!containsNode) {
-  //       filtered.splice(i, 1);
-  //       len--;
-  //       i--;
-  //     }
-  //   }
-  //   currData = filtered;
-  //   var newData = formatData(filtered);
-  //   return newData;
-  // }
-
   //filter all data using above information
   function allFilter() {
     //filtered data
@@ -337,37 +288,50 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
     rectListen();
   }
 
+  //current problem is that rects are getting listeners when chart is redrawn
+  //but in this method draw is called again so its drawn without calling rectListen
+  //which re adds listeners to the nodes. bad recursive cycle
+
   function rectListen() {
     $('.node').each(function() {
-      var node = $(this);
-      var text = node[0]['lastChild']['textContent'];
-      var rect = node[0]['firstChild'];
+      var myNode = $(this);
+      var text = myNode[0]['lastChild']['textContent'];
+      var rect = myNode[0]['firstChild'];
       rect.onclick = function() {
-        selRows.push(text);
-        json = allFilter();
-        chart.draw(emptyData);
-        chart.draw(json);
-        crucialVals = chart.getX();
-        addHeaders();
-        var textDiv = $('#sel-nodes');
-        var p = $('<p></p>').text(text);
-        p.click(function() {
-          var ind = selRows.indexOf($(this)[0]['innerText']);
-          selRows.splice(ind, 1);
-          if (selRows.length == 0) {
-            json = allFilter();
-          } else {
-            json = allFilter();
-          }
-          chart.draw(emptyData);
-          chart.draw(json);
-          crucialVals = chart.getX();
-          addHeaders();
-          $(this).remove();
-        });
-        textDiv.append(p);
-      }
+        addListeners(myNode);
+      };
     });
+  }
+
+  function addListeners(node) {
+    var text = node[0]['lastChild']['textContent'];
+    console.log(text);
+    var rect = node[0]['firstChild'];
+    selRows.push(text);
+    json = allFilter();
+    // chart.draw(emptyData);
+    // chart.draw(json);
+    redraw(json);
+    crucialVals = chart.getX();
+    addHeaders();
+    var textDiv = $('#sel-nodes');
+    var p = $('<p></p>').text(text);
+    p.click(function() {
+      var ind = selRows.indexOf($(this)[0]['innerText']);
+      selRows.splice(ind, 1);
+      if (selRows.length == 0) {
+        json = allFilter();
+      } else {
+        json = allFilter();
+      }
+      // chart.draw(emptyData);
+      // chart.draw(json);
+      redraw(json);
+      crucialVals = chart.getX();
+      addHeaders();
+      $(this).remove();
+    });
+    textDiv.append(p);
   }
 
   //redraw chart if different nodes selected
@@ -380,6 +344,7 @@ d3.csv('UWSustainabilityResearchers_2_21.csv', function(error, data) {
     json = allFilter();
     chart.draw(emptyData);
     chart.draw(json);
+    rectListen();
     addHeaders();
   });
 });
