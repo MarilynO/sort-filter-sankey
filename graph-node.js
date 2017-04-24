@@ -94,10 +94,11 @@ function formatData(data) {
 
 //load different CSV's here
 d3.csv('UWSustainabilityResearchers_3_20.csv', function(error, data) {
+
   //keep track of columns filtered in an array
   var selColumns = [];
   //keep track of rows filtered in an array
-  var selRows = [];
+  var selRows = ['pollution'];
   // var node;
   var outside = [];
   var colors = {};
@@ -159,6 +160,22 @@ d3.csv('UWSustainabilityResearchers_3_20.csv', function(error, data) {
     .draw(json);
     addHeaders();
 
+    // chart2.name(label)
+    //   .colorNodes(function(name, node) {
+    //     return color(node, 1) || colors.fallback;
+    //   })
+    //   .colorLinks(function(link) {
+    //     return color(link.source, 4) || color(link.target, 1) || colors.fallback;
+    //   })
+    //   .nodeWidth(15)
+    //   .nodePadding(10)
+    //   .spread(true)
+    //   .iterations(0)
+    //   .draw(json);
+    //   addHeaders();
+
+
+
     function addHeaders() {
       // crucialVals = chart.getX();
       // $(".column-headers").remove();
@@ -194,6 +211,17 @@ d3.csv('UWSustainabilityResearchers_3_20.csv', function(error, data) {
             return heads[i];
           });
     }
+
+    var butt = $('#button');
+    butt.click(function() {
+      $('#chart').height(800);
+      $('body svg').attr('height', '800px');
+      // d3.select('body svg g').attr('transform', 'scale(' + $('body svg').height() / 1600 + ')');
+      d3.select('body svg g').attr('height', '800px');
+      json = allFilter();
+      chart.draw(emptyData);
+      chart.draw(json);
+    })
 
   rectListen();
   function label(node) {
